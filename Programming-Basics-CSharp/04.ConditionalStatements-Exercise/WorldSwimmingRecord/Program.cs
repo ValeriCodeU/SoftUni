@@ -23,11 +23,8 @@ namespace WorldSwimmingRecord
             {
                 double lackTime = allTime - record;
                 Console.WriteLine($"No, he failed! He was {lackTime:f2} seconds slower.");
-            }
+            }     
             
-            
-
-
         }
     }
 }
