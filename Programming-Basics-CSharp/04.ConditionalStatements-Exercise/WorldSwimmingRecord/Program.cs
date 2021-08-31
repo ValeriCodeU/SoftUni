@@ -18,12 +18,7 @@ namespace WorldSwimmingRecord
             if (allTime < record)
             {                
                 Console.WriteLine($"Yes, he succeeded! The new world record is {allTime:f2} seconds.");
-            }
-            //else 
-            //{
-            //    double lackTime = allTime - record;
-            //    Console.WriteLine($"No, he failed! He was {lackTime:f2} seconds slower.");
-            //}
+            }          
             else if (allTime >= record)
             {
                 double lackTime = allTime - record;
