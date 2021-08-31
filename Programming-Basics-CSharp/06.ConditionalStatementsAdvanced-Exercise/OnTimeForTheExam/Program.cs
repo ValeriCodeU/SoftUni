@@ -15,8 +15,6 @@ namespace OnTimeForTheExam2
             int studentTime = 0;
             int timeDifference = 0;
 
-
-
             startExamTime = hourExam * 60 + minutesExam;
             studentTime = arivalHourExam * 60 + arivalMinutesExam;
 
@@ -57,9 +55,7 @@ namespace OnTimeForTheExam2
                 {
                     Console.WriteLine($"{timeDifference} minutes before the start");
                 }
-            }
-
-        
+            }        
         }
     }
 }
