@@ -16,10 +16,8 @@ namespace Moving
             string input = Console.ReadLine();
 
             while (input != "Done")
-            {
-                
-                int numOfBoxes = int.Parse(input);
-                
+            {               
+                int numOfBoxes = int.Parse(input);               
 
                 sumOfBoxesVolume += numOfBoxes;
 
@@ -29,16 +27,11 @@ namespace Moving
                     break;
                 }
                 input = Console.ReadLine();
-            }
-            
-
+            }           
             if (input == "Done")
             {
                 Console.WriteLine($"{apartmentSpace - sumOfBoxesVolume} Cubic meters left.");
-            }
-           
-
-            
+            }        
         }
     }
 }
