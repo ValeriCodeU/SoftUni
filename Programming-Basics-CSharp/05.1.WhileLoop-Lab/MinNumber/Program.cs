@@ -7,9 +7,7 @@ namespace MinNumber
         static void Main(string[] args)
         {
             string input = Console.ReadLine();
-
             int minNum = int.MaxValue;
-
 
             while (input != "Stop")
             {
@@ -19,10 +17,7 @@ namespace MinNumber
                 {
                     minNum = number;
                 }
-
                 input = Console.ReadLine();
-
-
             }
             Console.WriteLine(minNum);
         }
