@@ -6,19 +6,13 @@ namespace AccountBalance
     {
         static void Main(string[] args)
         {
-            string input = Console.ReadLine();         
-
-            
-
+            string input = Console.ReadLine();    
+           
             double totalMoney = 0.0;
-
 
             while (input != "NoMoreMoney")
             {
-
-                double importMoney = double.Parse(input);
-                
-
+                double importMoney = double.Parse(input);               
 
                 if (importMoney < 0)
                 {
@@ -28,10 +22,7 @@ namespace AccountBalance
                 Console.WriteLine($"Increase: {importMoney:f2}");
                 totalMoney += importMoney;
                 input = Console.ReadLine();
-
-            }
-            
-
+            }          
             Console.WriteLine($"Total: {totalMoney:f2}");
         }
     }
