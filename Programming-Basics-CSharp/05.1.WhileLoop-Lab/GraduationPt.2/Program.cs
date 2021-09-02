@@ -14,15 +14,10 @@ namespace GraduationPt._2
             
             int outClass = 0;
 
-
-
-
             while (classCounter <= 12)
             {
                 double yearEvaluation = double.Parse(Console.ReadLine());
                 sumYearEvaluation += yearEvaluation;
-
-
 
                 if (yearEvaluation < 4.00)
                 {
@@ -31,30 +26,17 @@ namespace GraduationPt._2
                     {
                         Console.WriteLine($"{studentName} has been excluded at {classCounter} grade");
                         break;
-
                     }
-                    continue;                   
-
-
+                    continue;                
                 }               
                 
-                classCounter++;            
-                                              
-
-            }
-                      
-
+                classCounter++;         
+            }                     
             if(classCounter > 11)
             {
                 double averageGrade = sumYearEvaluation / 12;
                 Console.WriteLine($"{studentName} graduated. Average grade: {averageGrade:f2}");
             }
-            
-
-
-
-
-
         }
     }
 }
