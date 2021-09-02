@@ -7,23 +7,13 @@ namespace Sequence2k_1
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-
-            int k = 1;
-
-            
+            int k = 1;           
 
             while (k <= n)
             {
                 Console.WriteLine(k);
-
-
-                k = k * 2 + 1;                
-
-
-                
+                k = k * 2 + 1;              
             }
-
-            
         }
     }
 }
