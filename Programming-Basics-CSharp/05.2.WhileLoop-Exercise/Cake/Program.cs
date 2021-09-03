@@ -12,7 +12,6 @@ namespace Cake
             int cake = cakeLength * cakeWidth;
 
             string input = Console.ReadLine();
-
             int countPieces = 0;
 
             while (input != "STOP") 
