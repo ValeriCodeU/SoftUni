@@ -7,10 +7,7 @@ namespace Walking
         static void Main(string[] args)
         {
             const int GOALSTEPS = 10000;
-
             int totalSteps = 0;
-
-           
 
             while (totalSteps < GOALSTEPS)
             {
@@ -30,24 +27,12 @@ namespace Walking
 
                 int steps = int.Parse(input);
                 totalSteps += steps;
-
-
-
-                
-
-                
             }
-
             if (totalSteps >= GOALSTEPS)
             {
                 Console.WriteLine("Goal reached! Good job!");
                 Console.WriteLine($"{totalSteps - GOALSTEPS} steps over the goal!");
             }
-
-            //else
-            //{
-            //    Console.WriteLine($"{GOALSTEPS - totalSteps} more steps to reach goal.");
-            //}
         }
     }
 }
