@@ -16,8 +16,6 @@ namespace OldBooks
 
             while (book != "No More Books")
             {              
-
-
                 if (input == book)
                 {
                     Console.WriteLine($"You checked {numOfBooks} books and found it.");
@@ -26,7 +24,6 @@ namespace OldBooks
 
                 book = Console.ReadLine();
                 numOfBooks++;
-
             }
 
             if (book == "No More Books")
@@ -34,8 +31,6 @@ namespace OldBooks
                 Console.WriteLine("The book you search is not here!");
                 Console.WriteLine($"You checked {numOfBooks} books.");
             }
-
-            
         }
     }
 }
