@@ -8,13 +8,8 @@ namespace Vacation
         {
             double tripMoney = double.Parse(Console.ReadLine());
             double currentMoney = double.Parse(Console.ReadLine());
-
             int days = 0;
             int spendDaysCounter = 0;
-
-            //double savedMoney = 0;
-
-           
 
             while (tripMoney > currentMoney && spendDaysCounter < 5)
             {
@@ -43,21 +38,12 @@ namespace Vacation
                     {
                         currentMoney = 0;
                     }
-
                 }
-               
             }
-           
-
             if (currentMoney >= tripMoney)
             {
                 Console.WriteLine($"You saved the money for {days} days.");
             }
-
-
-           
-
-
         }
     }
 }
