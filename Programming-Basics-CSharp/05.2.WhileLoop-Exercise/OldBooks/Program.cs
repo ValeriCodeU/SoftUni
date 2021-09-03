@@ -21,11 +21,9 @@ namespace OldBooks
                     Console.WriteLine($"You checked {numOfBooks} books and found it.");
                     break;
                 }
-
                 book = Console.ReadLine();
                 numOfBooks++;
             }
-
             if (book == "No More Books")
             {
                 Console.WriteLine("The book you search is not here!");
