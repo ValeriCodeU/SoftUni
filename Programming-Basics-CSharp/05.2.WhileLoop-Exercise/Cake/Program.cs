@@ -26,11 +26,7 @@ namespace Cake
                 }
 
                 input = Console.ReadLine();
-            }
-
-            
-
-
+            }          
             if (input == "STOP")
             {
                 Console.WriteLine($"{cake - countPieces} pieces are left.");
