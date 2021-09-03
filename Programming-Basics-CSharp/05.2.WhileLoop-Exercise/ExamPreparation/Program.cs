@@ -7,8 +7,6 @@ namespace ExamPreparation
         static void Main(string[] args)
         {
             int numOflowGrades = int.Parse(Console.ReadLine());
-
-            
             string taskName = Console.ReadLine();
 
             int counLowGrades = 0;
@@ -18,8 +16,6 @@ namespace ExamPreparation
             double grades = 0;
 
             string lastProblem = "";
-
-            
 
             while (taskName != "Enough")
             {
@@ -40,10 +36,6 @@ namespace ExamPreparation
                 }
                 lastProblem = taskName;
                 taskName = Console.ReadLine();
-
-
-
-
             }
 
             if (taskName == "Enough")
