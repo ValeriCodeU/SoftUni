@@ -24,7 +24,6 @@ namespace Walking
                     }
                     break;
                 }
-
                 int steps = int.Parse(input);
                 totalSteps += steps;
             }
