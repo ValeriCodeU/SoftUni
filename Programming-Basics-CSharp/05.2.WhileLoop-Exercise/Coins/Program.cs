@@ -14,7 +14,6 @@ namespace Coins
 
             int coins = 0;
 
-
             while (cent > 0)
             {
                 if (cent - 200 >= 0)
@@ -64,12 +63,8 @@ namespace Coins
                     cent -= 1;
                     coins++;
                 }
-
             }
-
             Console.WriteLine(coins);
-
-
         }
     }
 }
