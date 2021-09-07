@@ -10,7 +10,6 @@ namespace Ages
 
             string kindOfPerson = "";
 
-
             if (age >=0 && age <=2)
             {
                 kindOfPerson = "baby";
