@@ -17,6 +17,6 @@ namespace TaskBoardApp.Data.Entities
 
         public string Name { get; init; }
 
-        public IEnumerable<Task> Tasks { get; set; }
+        public ICollection<Task> Tasks { get; set; }
     }
 }

@@ -23,9 +23,9 @@ namespace TaskBoardApp.Data
         {
         }
 
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Task> Tasks { get; set; } = null!;
 
-        public DbSet<Board> Boards { get; set; }
+        public DbSet<Board> Boards { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {            
