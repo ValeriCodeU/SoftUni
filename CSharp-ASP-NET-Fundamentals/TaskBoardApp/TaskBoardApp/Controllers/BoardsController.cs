@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TaskBoardApp.Contracts;
 using TaskBoardApp.Data;
 using TaskBoardApp.Models;
 
@@ -7,28 +8,16 @@ namespace TaskBoardApp.Controllers
 {
 	public class BoardsController : Controller
 	{
-		private readonly TaskBoardAppDbContext dbContext;
+		private readonly IBoardService boardService;
 
-		public BoardsController(TaskBoardAppDbContext _dbContext)
+		public BoardsController(IBoardService _boardService)
 		{
-			dbContext = _dbContext;
+			boardService = _boardService;
 		}
 
 		public async Task<IActionResult> All()
 		{
-			var model = dbContext.Boards
-				.Select(b => new BoardViewModel()
-				{
-					Id = b.Id,
-					Name = b.Name,
-					Tasks = b.Tasks.Select(t => new TaskViewModel()
-					{
-						Id = t.Id,
-						Title = t.Title,
-						Description = t.Description,
-						Owner = t.Owner.UserName
-					})
-				}).ToListAsync();
+			var model = await boardService.GellAllAsync();
 
 			return View(model);
 		}
