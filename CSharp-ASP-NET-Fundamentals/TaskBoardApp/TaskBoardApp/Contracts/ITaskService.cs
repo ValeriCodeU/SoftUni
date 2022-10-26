@@ -6,6 +6,6 @@ namespace TaskBoardApp.Contracts
     {
         Task<IEnumerable<TaskBoardModel>> GetTaskBoardsAsync();
 
-        Task AddTaskFormAsync(TaskFormModel model, string userId);
+        Task AddTaskFormAsync(TaskFormModel model, string userId);       
     }
 }
