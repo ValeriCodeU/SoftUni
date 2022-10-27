@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using TaskBoardApp.Contracts;
 using TaskBoardApp.Data;
@@ -57,6 +58,28 @@ namespace TaskBoardApp.Controllers
             return RedirectToAction("All", "Boards");
         }
 
-        
+        public async Task<IActionResult> Details(int id)
+        {
+            var model = await taskService.GetTaskDetailsAsync(id);
+
+            //var model = await dbContext.Tasks
+            //   .Where(t => t.Id == id)
+            //   .Select(t => new TaskDetailsViewModel()
+            //   {
+            //       Id = t.Id,
+            //       Title = t.Title,
+            //       Description = t.Description,
+            //       CreatedOn = t.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
+            //       Board = t.Board.Name,
+            //       Owner = t.Owner.UserName
+            //   }).FirstOrDefaultAsync();
+
+            if (model == null)
+            {
+                return BadRequest();
+            }
+
+            return View(model);
+        }
     }
 }

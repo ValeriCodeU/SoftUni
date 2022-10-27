@@ -41,6 +41,21 @@ namespace TaskBoardApp.Services
             }).ToListAsync();
         }
 
-        
+        public async Task<TaskDetailsViewModel> GetTaskDetailsAsync(int id)
+        {
+            
+           return await dbContext.Tasks
+                .Where(t => t.Id == id)
+                
+                .Select(t => new TaskDetailsViewModel()
+                {
+                    Id = t.Id,
+                    Title = t.Title,
+                    Description = t.Description,
+                    CreatedOn = t.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
+                    Board = t.Board.Name,
+                    Owner = t.Owner.UserName
+                }).FirstAsync();
+        }
     }
 }
