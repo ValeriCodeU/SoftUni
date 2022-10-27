@@ -60,19 +60,7 @@ namespace TaskBoardApp.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var model = await taskService.GetTaskDetailsAsync(id);
-
-            //var model = await dbContext.Tasks
-            //   .Where(t => t.Id == id)
-            //   .Select(t => new TaskDetailsViewModel()
-            //   {
-            //       Id = t.Id,
-            //       Title = t.Title,
-            //       Description = t.Description,
-            //       CreatedOn = t.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
-            //       Board = t.Board.Name,
-            //       Owner = t.Owner.UserName
-            //   }).FirstOrDefaultAsync();
+            var model = await taskService.GetTaskDetailsAsync(id);         
 
             if (model == null)
             {
