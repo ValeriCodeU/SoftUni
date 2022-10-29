@@ -9,5 +9,7 @@ namespace TaskBoardApp.Contracts
         Task AddTaskFormAsync(TaskFormModel model, string userId);
 
         Task<TaskDetailsViewModel> GetTaskDetailsAsync(int id);
+
+        Task EditTaskFormAsync(TaskFormModel model, string userId);        
     }
 }

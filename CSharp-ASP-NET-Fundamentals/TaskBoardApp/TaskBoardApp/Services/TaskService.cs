@@ -31,6 +31,11 @@ namespace TaskBoardApp.Services
           
         }
 
+        public Task EditTaskFormAsync(TaskFormModel model, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<TaskBoardModel>> GetTaskBoardsAsync()
         {
             return await dbContext.Boards.Select(b => new TaskBoardModel()
@@ -45,8 +50,7 @@ namespace TaskBoardApp.Services
         {
             
            return await dbContext.Tasks
-                .Where(t => t.Id == id)
-                
+                .Where(t => t.Id == id)                
                 .Select(t => new TaskDetailsViewModel()
                 {
                     Id = t.Id,
