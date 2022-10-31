@@ -75,7 +75,8 @@ namespace TaskBoardApp.Controllers
 
         public async Task<IActionResult> Edit (int id)
         {
-            var task = await dbContext.Tasks.FindAsync(id);
+            //var task = await dbContext.Tasks.FindAsync(id);
+            var task = await taskService.GetTaskEntity(id);
 
             if (task == null)
             {
@@ -98,6 +99,35 @@ namespace TaskBoardApp.Controllers
             };
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Edit(int id, TaskFormModel model)
+        {
+            //var task = await dbContext.Tasks.FindAsync(id);
+            var task = await taskService.GetTaskEntity(id);
+
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (task.OwnerId != userId)
+            {
+                return Unauthorized();
+            }
+
+            var boards = await taskService.GetTaskBoardsAsync();
+
+            if (!boards.Any(b => b.Id == model.BoardId))
+            {
+                ModelState.AddModelError(nameof(model.BoardId), "Board doest not exist.");
+            }
+
+            await taskService.EditTaskFormAsync(model, task);
+
+            return RedirectToAction("All", "Boards");
         }
 
     }

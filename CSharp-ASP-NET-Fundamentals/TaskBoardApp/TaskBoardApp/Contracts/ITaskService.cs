@@ -10,6 +10,8 @@ namespace TaskBoardApp.Contracts
 
         Task<TaskDetailsViewModel> GetTaskDetailsAsync(int id);
 
-        Task EditTaskFormAsync(TaskFormModel model, string userId);        
+        Task EditTaskFormAsync(TaskFormModel model, Data.Entities.Task task);
+        
+        Task<Data.Entities.Task> GetTaskEntity(int id);
     }
 }

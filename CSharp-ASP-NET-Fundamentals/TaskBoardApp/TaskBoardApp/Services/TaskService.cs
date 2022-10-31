@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Build.Framework;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using TaskBoardApp.Contracts;
 using TaskBoardApp.Data;
@@ -31,9 +32,13 @@ namespace TaskBoardApp.Services
           
         }
 
-        public Task EditTaskFormAsync(TaskFormModel model, string userId)
+        public async Task EditTaskFormAsync(TaskFormModel model, Data.Entities.Task task)
         {
-            throw new NotImplementedException();
+            task.Title = model.Title;
+            task.Description = model.Description;
+            task.BoardId = model.BoardId;
+
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TaskBoardModel>> GetTaskBoardsAsync()
@@ -60,6 +65,13 @@ namespace TaskBoardApp.Services
                     Board = t.Board.Name,
                     Owner = t.Owner.UserName
                 }).FirstAsync();
+        }
+
+        public async Task<Data.Entities.Task> GetTaskEntity(int id)
+        {
+            var task = await dbContext.Tasks.FindAsync(id);
+
+            return task;
         }
     }
 }
