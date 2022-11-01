@@ -41,6 +41,18 @@ namespace TaskBoardApp.Services
             await dbContext.SaveChangesAsync();
         }
 
+        public async Task<TaskViewModel> GetDeleteTaskAsync(Data.Entities.Task task)
+        {
+            var model = new TaskViewModel()
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+            };
+
+            return model;
+        }
+
         public async Task<TaskFormModel> GetEditTaskFormAsync(Data.Entities.Task task)
         {
             var model = new TaskFormModel()

@@ -15,5 +15,7 @@ namespace TaskBoardApp.Contracts
         Task<TaskFormModel> GetEditTaskFormAsync(Data.Entities.Task task);
         
         Task<Data.Entities.Task> GetTaskEntity(int id);
+
+        Task<TaskViewModel> GetDeleteTaskAsync(Data.Entities.Task task);
     }
 }

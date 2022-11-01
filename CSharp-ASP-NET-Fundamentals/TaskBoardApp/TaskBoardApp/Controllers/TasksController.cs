@@ -126,5 +126,25 @@ namespace TaskBoardApp.Controllers
             return RedirectToAction("All", "Boards");
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var task = await taskService.GetTaskEntity(id);
+
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (task.OwnerId != userId)
+            {
+                return Unauthorized();
+            }
+
+            var model = await taskService.GetDeleteTaskAsync(task);
+
+            return View(model);
+        }
     }
 }
