@@ -41,6 +41,19 @@ namespace TaskBoardApp.Services
             await dbContext.SaveChangesAsync();
         }
 
+        public async Task<TaskFormModel> GetEditTaskFormAsync(Data.Entities.Task task)
+        {
+            var model = new TaskFormModel()
+            {
+                Title = task.Title,
+                Description = task.Description,
+                BoardId = task.BoardId,
+                Boards = await GetTaskBoardsAsync()
+            };
+
+            return model;
+        }
+
         public async Task<IEnumerable<TaskBoardModel>> GetTaskBoardsAsync()
         {
             return await dbContext.Boards.Select(b => new TaskBoardModel()

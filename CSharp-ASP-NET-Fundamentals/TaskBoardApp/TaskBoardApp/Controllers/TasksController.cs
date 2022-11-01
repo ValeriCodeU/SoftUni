@@ -90,16 +90,12 @@ namespace TaskBoardApp.Controllers
                 return Unauthorized();
             }
 
-            var model = new TaskFormModel()
-            {
-                Title = task.Title,
-                Description = task.Description,
-                BoardId = task.BoardId,
-                Boards = await taskService.GetTaskBoardsAsync()
-            };
+            var model = await taskService.GetEditTaskFormAsync(task);
 
             return View(model);
         }
+
+        [HttpPost]
 
         public async Task<IActionResult> Edit(int id, TaskFormModel model)
         {
