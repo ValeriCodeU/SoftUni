@@ -32,6 +32,14 @@ namespace TaskBoardApp.Services
           
         }
 
+        public async Task DeleteTaskAsync(Data.Entities.Task task)
+        {
+
+            dbContext.Tasks.Remove(task);
+            await dbContext.SaveChangesAsync();
+
+        }
+
         public async Task EditTaskFormAsync(TaskFormModel model, Data.Entities.Task task)
         {
             task.Title = model.Title;
