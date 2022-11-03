@@ -2,9 +2,9 @@
 {
     public class HomeViewModel
     {
-        public int AllTasksCoubt { get; init; }
+        public int AllTasksCount { get; init; }
 
-        public ICollection<HomeBoardModel> BoardsWithTasksCount { get; init; } = new LinkedList<HomeBoardModel>();
+        public ICollection<HomeBoardModel> BoardsWithTasksCount { get; init; } = new List<HomeBoardModel>();
 
         public int UserTasksCount { get; init; }
     }

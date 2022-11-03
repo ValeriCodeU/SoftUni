@@ -1,25 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Security.Claims;
+using TaskBoardApp.Contracts;
 using TaskBoardApp.Data;
 using TaskBoardApp.Models;
 
 namespace TaskBoardApp.Controllers
 {
     public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+    {       
+        private readonly IBoardService boardService;
 
-        private readonly TaskBoardAppDbContext dbContext;
-
-        public HomeController(ILogger<HomeController> logger, TaskBoardAppDbContext _dbContext)
-        {
-            _logger = logger;
-            dbContext = _dbContext;
+        public HomeController(IBoardService _boardService, TaskBoardAppDbContext _dbContext)
+        {            
+            boardService = _boardService;           
         }
 
         public IActionResult Index()
-        {
-            return View();
+        {           
+            var usersTasksCount = -1;
+
+            if (this.User?.Identity?.IsAuthenticated ?? false)
+            {
+                var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                //var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId != null)
+                {
+                    usersTasksCount = boardService.GetUserTasksCounts(userId);
+                }
+
+            }
+
+            var homeModel = boardService.GetHomeViewModel(usersTasksCount);
+
+            return View(homeModel);
         }
 
         //public IActionResult Privacy()
