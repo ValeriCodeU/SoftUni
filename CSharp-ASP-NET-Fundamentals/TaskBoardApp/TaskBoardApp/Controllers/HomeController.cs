@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using TaskBoardApp.Data;
 using TaskBoardApp.Models;
 
 namespace TaskBoardApp.Controllers
@@ -8,9 +9,12 @@ namespace TaskBoardApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly TaskBoardAppDbContext dbContext;
+
+        public HomeController(ILogger<HomeController> logger, TaskBoardAppDbContext _dbContext)
         {
             _logger = logger;
+            dbContext = _dbContext;
         }
 
         public IActionResult Index()
