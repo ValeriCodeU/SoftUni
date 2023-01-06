@@ -18,7 +18,7 @@
             @if (Model.Owner == this.User?.Identity?.Name)
             {
                 <tr class="actions">
-                    <th><span class="fw-bold">Actions:</th>
+                    <th><span class="fw-bold">Actions:</span></th>
 
                     <td>
                         <a asp-controller="Tasks" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>

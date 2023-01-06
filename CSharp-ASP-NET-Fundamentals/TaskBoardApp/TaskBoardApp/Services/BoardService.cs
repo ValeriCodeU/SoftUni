@@ -29,9 +29,7 @@ namespace TaskBoardApp.Services
                         Description = t.Description,
                         Owner = t.Owner.UserName
                     })
-                }).ToListAsync();
-
-          
+                }).ToListAsync();          
         }
 
         public int GetTasksCount()
