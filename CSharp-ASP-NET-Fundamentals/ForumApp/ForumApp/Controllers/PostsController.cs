@@ -50,8 +50,6 @@ namespace ForumApp.Controllers
                 Content = model.Content
             };
 
-
-
             data.Posts.Add(post);
             await data.SaveChangesAsync();
 

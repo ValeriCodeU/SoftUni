@@ -12,11 +12,12 @@ namespace ForumApp.Data
 
         }
 
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Post> Posts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration<Post>(new PostConfiguration());
+
             base.OnModelCreating(builder);
         }
     }
