@@ -63,6 +63,11 @@ namespace ForumApp.Controllers
         {
             var post = await data.Posts.FindAsync(id);
 
+            if (post == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             var postModel = new PostFormModel()
             {
                 Title = post.Title,
@@ -83,10 +88,13 @@ namespace ForumApp.Controllers
                 return View(model);
             }
 
-            post.Title = model.Title;
-            post.Content = model.Content;
+            if (post != null)
+            {
+                post.Title = model.Title;
+                post.Content = model.Content;
 
-            await data.SaveChangesAsync();
+                await data.SaveChangesAsync();
+            }           
 
             return RedirectToAction(nameof(Index));
         }
