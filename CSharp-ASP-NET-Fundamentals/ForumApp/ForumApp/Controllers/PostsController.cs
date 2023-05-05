@@ -83,7 +83,7 @@ namespace ForumApp.Controllers
                 return View(model);
             }
 
-            post.Title = post.Title;
+            post.Title = model.Title;
             post.Content = model.Content;
 
             await data.SaveChangesAsync();
