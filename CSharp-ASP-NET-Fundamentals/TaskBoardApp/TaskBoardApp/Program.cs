@@ -21,6 +21,11 @@ builder.Services.AddDefaultIdentity<User>(options =>
 
 })
     .AddEntityFrameworkStores<TaskBoardAppDbContext>();
+
+//builder.Services.ConfigureApplicationCookie(options =>
+//{
+//    options.LoginPath = "/Account/Login";
+//});
    
 
 builder.Services.AddControllersWithViews();

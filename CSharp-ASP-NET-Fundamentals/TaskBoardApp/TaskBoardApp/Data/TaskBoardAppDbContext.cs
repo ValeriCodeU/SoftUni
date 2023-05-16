@@ -8,13 +8,13 @@ namespace TaskBoardApp.Data
 {
     public class TaskBoardAppDbContext : IdentityDbContext<User>
     {
-        private User GuestUser { get; set; }
+        private User GuestUser { get; set; } = null!;
 
-        private Board OpenBoard { get; set; }
+        private Board OpenBoard { get; set; } = null!;
 
-        private Board InProgressBoard { get; set; }
+        private Board InProgressBoard { get; set; } = null!;
 
-        private Board DoneBoard { get; set; }
+        private Board DoneBoard { get; set; } = null!;
 
        
 
