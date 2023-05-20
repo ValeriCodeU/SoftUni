@@ -8,9 +8,7 @@ using TaskBoardApp.Models;
 
 namespace TaskBoardApp.Controllers
 {
-    [Authorize]
-
-    public class TasksController : Controller
+    public class TasksController : BaseController
     {
 
         private readonly TaskBoardAppDbContext dbContext;

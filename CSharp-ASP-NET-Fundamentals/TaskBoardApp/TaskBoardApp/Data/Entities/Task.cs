@@ -9,24 +9,24 @@ namespace TaskBoardApp.Data.Entities
 
         [Required]
         [MaxLength(MaxTaskTitle)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         [Required]
         [MaxLength(MaxTaskDescription)]
 
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         public DateTime CreatedOn { get; set; }
 
         public int BoardId { get; set; }
 
-        public Board Board { get; init; }
+        public Board Board { get; init; } = null!;
 
         [Required]
 
-        public string OwnerId { get; set; }
+        public string OwnerId { get; set; } = null!;
 
-        public User Owner { get; init; }
+        public User Owner { get; init; } = null!;
 
 
     }

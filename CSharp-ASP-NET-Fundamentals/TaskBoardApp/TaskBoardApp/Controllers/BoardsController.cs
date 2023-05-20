@@ -6,7 +6,7 @@ using TaskBoardApp.Models;
 
 namespace TaskBoardApp.Controllers
 {
-	public class BoardsController : Controller
+	public class BoardsController : BaseController
 	{
 		private readonly IBoardService boardService;
 

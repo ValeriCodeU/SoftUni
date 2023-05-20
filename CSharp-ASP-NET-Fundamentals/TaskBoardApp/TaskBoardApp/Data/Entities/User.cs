@@ -9,11 +9,11 @@ namespace TaskBoardApp.Data.Entities
         [Required]
         [MaxLength(MaxUserFirstName)]
 
-        public string FirstName { get; init; }
+        public string FirstName { get; init; } = null!;
 
         [Required]
         [MaxLength(MaxUserLastName)]
 
-        public string LastName { get; init; }
+        public string LastName { get; init; } = null!;
     }
 }
