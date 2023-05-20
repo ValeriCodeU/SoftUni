@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskBoardApp.Contracts;
 using TaskBoardApp.Data;
@@ -21,6 +22,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
 
 })
     .AddEntityFrameworkStores<TaskBoardAppDbContext>();
+   
 
 //builder.Services.ConfigureApplicationCookie(options =>
 //{
@@ -28,7 +30,10 @@ builder.Services.AddDefaultIdentity<User>(options =>
 //});
    
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddMvcOptions(option =>
+{
+    option.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+});
 
 builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<IBoardService, BoardService>();
