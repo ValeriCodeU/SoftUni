@@ -386,11 +386,14 @@ namespace Problem01.List.Tests
             }
 
             this.list.Insert(2, 1001);
+            
 
             Assert.AreEqual(2, this.list.IndexOf(1001));
 
             this.list.Insert(4, 1002);
             Assert.AreEqual(4, this.list.IndexOf(1002));
+            this.list.Insert(6, 1011);
+            Assert.AreEqual(6, this.list.IndexOf(1011));
             Assert.AreEqual(1, this.list[5]);
         }
 
