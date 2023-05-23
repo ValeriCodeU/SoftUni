@@ -1,5 +1,4 @@
 ﻿
-
 var list = new Problem01.List.List<int>();
 
 var numbers = new int[] { 3, 5, 7, 1, -5, -100 };

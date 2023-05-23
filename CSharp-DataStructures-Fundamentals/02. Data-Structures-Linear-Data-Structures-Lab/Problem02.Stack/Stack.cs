@@ -8,41 +8,88 @@
     {
         private class Node
         {
-            
+            public T Element { get; set; }
+            public Node Next { get; set; }
+
+            public Node(T element, Node next)
+            {
+                this.Element = element;
+                this.Next = next;
+            }
+
+            public Node(T element)
+            {
+                this.Element = element;
+            }
         }
 
         private Node top;
 
-        public int Count => throw new System.NotImplementedException();
+        public int Count { get; set; }
 
         public void Push(T item)
         {
-            throw new NotImplementedException();
+            var newNode = new Node(item, this.top);
+            this.top = newNode;
+            this.Count++;
         }
 
         public T Pop()
         {
-            throw new System.NotImplementedException();
+            if (Count == 0)
+            {
+                throw new InvalidOperationException();
+            }
+            var currentNode = this.top;
+            this.top = currentNode.Next;
+            currentNode.Next = null;
+            
+            this.Count--;
+
+            return currentNode.Element;
         }
 
         public T Peek()
         {
-            throw new System.NotImplementedException();
+            if (Count == 0)
+            {
+                throw new InvalidOperationException();
+            }
+
+            return this.top.Element;
         }
 
         public bool Contains(T item)
         {
-            throw new System.NotImplementedException();
+            var currentNode = this.top;
+
+            while (currentNode != null)
+            {
+                if (currentNode.Element.Equals(item))
+                {
+                    return true;
+                }
+
+                currentNode = currentNode.Next;
+            }
+
+            return false;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            var currentNode = this.top;
+
+            while (currentNode != null)
+            {
+                yield return currentNode.Element;
+                currentNode = currentNode.Next;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.GetEnumerator();
         }
     }
 }
