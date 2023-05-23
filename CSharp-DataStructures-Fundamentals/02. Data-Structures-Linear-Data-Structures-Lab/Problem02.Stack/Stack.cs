@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
     public class Stack<T> : IAbstractStack<T>
     {
@@ -19,8 +20,9 @@
 
             public Node(T element)
             {
-                this.Element = element;
+                this.Element = element;              
             }
+            
         }
 
         private Node top;
@@ -29,7 +31,8 @@
 
         public void Push(T item)
         {
-            var newNode = new Node(item, this.top);
+            var newNode = new Node(item);
+            newNode.Next = this.top;            
             this.top = newNode;
             this.Count++;
         }
@@ -60,7 +63,8 @@
         }
 
         public bool Contains(T item)
-        {
+        {           
+
             var currentNode = this.top;
 
             while (currentNode != null)
