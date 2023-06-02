@@ -25,6 +25,6 @@ list.Add(15);
 
 Console.WriteLine(String.Join(", ", list));
 
-list.RemoveAt(1);
+list.Insert(1, 3);
 
 Console.WriteLine(String.Join(", ", list));

@@ -83,7 +83,6 @@
 
             for (int i = this.Count; i > this.Count - index; i--)
             {
-                //this.items[this.Count - i] = this.items[this.Count -i - 1];
                 this.items[i] = this.items[i - 1];
             }
 
@@ -108,11 +107,16 @@
         {
             this.ValidateIndex(index);
 
+            //option 2
             //index = this.Count - index - 1;
 
+            //option 2
+            //(int i = index; i < this.Count - 1; i++)
             for (int i = index; i > 0; i--)
             {
                 this.items[this.Count - i - 1] = this.items[this.Count - i];
+
+                //option 2
                 //this.items[i] = this.items[i + 1];
             }
 
