@@ -1,8 +1,7 @@
-﻿namespace Demo
+﻿namespace Tree
 {
     using System;
     using System.Linq;
-    using Tree;
 
     class Program
     {

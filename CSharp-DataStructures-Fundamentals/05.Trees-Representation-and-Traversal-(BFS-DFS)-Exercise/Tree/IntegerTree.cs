@@ -18,7 +18,7 @@
 
             Predicate<Tree<int>> predicate = tree => tree.Children.Count == 0;
 
-            this.GetResultWithDfs(this, leafs, predicate);
+            GetResultWithDfs(this, leafs, predicate);
 
             foreach (var node in leafs)
             {
@@ -30,7 +30,7 @@
                 {
                     currentSum += currentNode.Key;
                     currentResult.Push(currentNode.Key);
-                    currentNode = currentNode.Parent;                    
+                    currentNode = currentNode.Parent;
 
                     if (currentNode.Parent == null)
                     {
@@ -58,7 +58,7 @@
                     leafs.Add(child);
                 }
 
-                this.GetResultWithDfs(child, leafs, predicate);
+                GetResultWithDfs(child, leafs, predicate);
             }
         }
 
@@ -69,7 +69,7 @@
 
             Predicate<Tree<int>> predicate = tree => tree.Children.Count > 0 && tree.Parent != null;
 
-            this.GetResultWithDfs(this, internalNodes, predicate);
+            GetResultWithDfs(this, internalNodes, predicate);
 
             foreach (var node in internalNodes)
             {
@@ -87,7 +87,7 @@
                     currentResult.Enqueue(currentNode.Key);
 
                     foreach (var child in currentNode.Children)
-                    {                        
+                    {
                         queue.Enqueue(child);
                     }
                 }
@@ -100,6 +100,6 @@
 
             return result;
         }
-        
+
     }
 }

@@ -10,7 +10,7 @@
 
         public IntegerTreeFactory()
         {
-            this.nodesByKey = new Dictionary<int, IntegerTree>();
+            nodesByKey = new Dictionary<int, IntegerTree>();
         }
 
         public IntegerTree CreateTreeFromStrings(string[] input)
@@ -21,26 +21,26 @@
                 var parent = keys[0];
                 var child = keys[1];
 
-                this.AddEdge(parent, child);
+                AddEdge(parent, child);
             }
 
-            return this.GetRoot();
+            return GetRoot();
         }
 
         public IntegerTree CreateNodeByKey(int key)
         {
             if (!nodesByKey.ContainsKey(key))
             {
-                this.nodesByKey.Add(key, new IntegerTree(key));
+                nodesByKey.Add(key, new IntegerTree(key));
             }
 
-            return this.nodesByKey[key];
+            return nodesByKey[key];
         }
 
         public void AddEdge(int parent, int child)
         {
-            var parentNode = this.CreateNodeByKey(parent);
-            var childeNode = this.CreateNodeByKey(child);
+            var parentNode = CreateNodeByKey(parent);
+            var childeNode = CreateNodeByKey(child);
 
             parentNode.AddChild(childeNode);
             childeNode.AddParent(parentNode);

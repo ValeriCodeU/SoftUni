@@ -39,7 +39,9 @@
 
             Console.WriteLine(String.Join(", ", tree.OrderBfs()));
             Console.WriteLine(String.Join(", ", tree.OrderDfs()));
-            
+            tree.Swap(36, 42);
+            Console.WriteLine(String.Join(", ", tree.OrderDfs()));
+
         }
     }
 }

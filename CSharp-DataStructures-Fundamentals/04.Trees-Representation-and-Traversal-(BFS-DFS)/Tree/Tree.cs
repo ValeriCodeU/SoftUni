@@ -10,6 +10,11 @@
         private List<Tree<T>> children;
         private Tree<T> parent;
 
+        public Tree()
+        {
+
+        }
+
         public Tree(T _value)
         {
             value = _value;
@@ -39,7 +44,7 @@
             {
                 throw new ArgumentNullException();
             }
-        }       
+        }
 
         public IEnumerable<T> OrderBfs()
         {
@@ -67,7 +72,7 @@
             var result = new List<T>();
             this.DfsWithRecursion(this, result);
 
-            //var result = this.DfsWithStack();
+            //result = this.DfsWithStack().ToList();
 
             return result;
         }
@@ -93,8 +98,8 @@
 
         public void Swap(T firstKey, T secondKey)
         {
-            var firstNode = FindNodeWithBfs(firstKey);
-            var secondNode = FindNodeWithBfs(secondKey);
+            var firstNode = FindNodeWithDfs(firstKey);
+            var secondNode = FindNodeWithDfs(secondKey);
 
             if (firstNode == null || secondNode == null)
             {
@@ -142,6 +147,34 @@
             return null;
         }
 
+        //private Tree<T> FindNodeWithDfs(T nodeKey)
+        //{
+        //    var result = new Tree<T>();
+
+        //    this.Dfs(nodeKey, result, this);
+
+        //    return result;
+        //}
+
+        private Tree<T> FindNodeWithDfs(T nodeKey)
+        {
+            if (this.value.Equals(nodeKey))
+            {
+                return this;
+            }
+
+            foreach (var child in children)
+            {
+                var result = child.FindNodeWithDfs(nodeKey);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+
+            return null;
+        }
+
         private IEnumerable<T> DfsWithStack()
         {
             var result = new Stack<T>();
@@ -171,8 +204,22 @@
             {
                 this.DfsWithRecursion(child, result);
             }
-            
+
             result.Add(tree.value);
         }
+
+        //private void Dfs(T nodeKey, Tree<T> result, Tree<T> tree)
+        //{
+        //    foreach (var child in tree.children)
+        //    {
+        //        if (child.value.Equals(nodeKey))
+        //        {
+        //            result = child;
+        //            return;
+        //        }
+
+        //        this.Dfs(nodeKey, result, child);
+        //    }           
+        //}
     }
 }

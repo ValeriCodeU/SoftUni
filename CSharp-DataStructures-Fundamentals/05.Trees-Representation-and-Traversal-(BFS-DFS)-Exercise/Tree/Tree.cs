@@ -1,7 +1,6 @@
 ﻿namespace Tree
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -13,12 +12,12 @@
         public Tree(T key, params Tree<T>[] children)
         {
             this.children = new List<Tree<T>>();
-            this.Key = key;
+            Key = key;
 
             foreach (var child in children)
             {
                 child.Parent = this;
-                this.AddChild(child);
+                AddChild(child);
             }
         }
 
@@ -26,23 +25,23 @@
 
         public Tree<T> Parent { get; private set; }
 
-        public IReadOnlyCollection<Tree<T>> Children => this.children.AsReadOnly();
+        public IReadOnlyCollection<Tree<T>> Children => children.AsReadOnly();
 
         public void AddChild(Tree<T> child)
         {
-            this.children.Add(child);
+            children.Add(child);
         }
 
         public void AddParent(Tree<T> parent)
         {
-            this.Parent = parent;
+            Parent = parent;
         }
 
         public string AsString()
         {
             var sb = new StringBuilder();
 
-            this.DfsAsString(this, sb, 0);
+            DfsAsString(this, sb, 0);
 
             return sb.ToString().TrimEnd();
         }
@@ -54,7 +53,7 @@
 
             foreach (var child in tree.children)
             {
-                this.DfsAsString(child, sb, indent + 2);
+                DfsAsString(child, sb, indent + 2);
             }
 
         }
@@ -91,10 +90,10 @@
             {
                 if (predicate.Invoke(child))
                 {
-                    result.Add(child);
+                    result.Add(child);                    
                 }
 
-                this.GetResultWithDfs(child, result, predicate);
+                GetResultWithDfs(child, result, predicate);
             }
         }
 
@@ -109,7 +108,7 @@
 
             Predicate<Tree<T>> predicate = tree => tree.children.Count == 0;
 
-            this.GetResultWithDfs(this, leafs, predicate);
+            GetResultWithDfs(this, leafs, predicate);
 
             Tree<T> deepestNod = null;
             var maxDepth = 0;
@@ -136,17 +135,17 @@
 
         public IEnumerable<T> GetLongestPath()
         {
-            var result = new Stack<T>();            
+            var result = new Stack<T>();
 
             var deepestNode = GetDeepestNode();
 
             while (deepestNode.Parent != null)
             {
                 result.Push(deepestNode.Key);
-                deepestNode = deepestNode.Parent;                
+                deepestNode = deepestNode.Parent;
             }
 
-            result.Push(this.Key);
+            result.Push(Key);
 
             return result;
 
