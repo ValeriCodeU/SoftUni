@@ -1,0 +1,29 @@
+name: Build and Test
+on:
+  push:
+    paths:
+      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
+    branches: [ "main" ]
+  pull_request:
+    paths:
+      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/01-02-Student-Registry-App
+    steps:
+    - name: Chekout the repository
+      uses: actions/checkout@v4
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x       
+    - name: Install dependencies
+      run: npm install   
+    - name: Run tests
+      run: npm test
