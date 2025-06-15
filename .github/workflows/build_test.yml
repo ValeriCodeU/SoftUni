@@ -8,17 +8,6 @@ on:
     paths:
       - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
     branches: [ "main" ]
-
-name: Build and Test
-on:
-  push:
-    paths:
-      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
-    branches: [ "main" ]
-  pull_request:
-    paths:
-      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
