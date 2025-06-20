@@ -2,11 +2,11 @@ name: Build and Test
 on:
   push:
     paths:
-      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
+      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/01-02-Student-Registry-App/**'
     branches: [ "main" ]
   pull_request:
     paths:
-      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/**'
+      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/01-02-Student-Registry-App/**'
     branches: [ "main" ]
   workflow_dispatch:
 
