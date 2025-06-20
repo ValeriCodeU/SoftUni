@@ -1,0 +1,38 @@
+name: Build and Test .NET - House Renting System
+
+on:
+  push:
+    paths:
+      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/04-House-Renting-System-App/**'
+    branches: [ "main" ]
+  pull_request:
+    paths:
+      - 'DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/04-House-Renting-System-App/**'
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./DevOps-for-Developers/CI-CD-in-GitHub-Actions-Exercise/04-House-Renting-System-App
+    
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build the project
+      run: dotnet build --no-restore
+      
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
