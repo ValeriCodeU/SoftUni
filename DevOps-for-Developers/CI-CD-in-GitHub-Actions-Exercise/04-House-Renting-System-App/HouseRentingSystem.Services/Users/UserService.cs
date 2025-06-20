@@ -11,9 +11,9 @@ namespace HouseRentingSystem.Services.Users
         public bool UserHasRents(string userId)
             => this.data.Houses.Any(h => h.RenterId == userId);
 
-
         private readonly HouseRentingDbContext data;
         private readonly IMapper mapper;
+
         public UserService(HouseRentingDbContext data,
             IMapper mapper)
         {
@@ -21,15 +21,15 @@ namespace HouseRentingSystem.Services.Users
             this.mapper = mapper;
         }
 
-
         public string UserFullName(string userId)
         {
             var user = this.data.Users.Find(userId);
 
-            if (string.IsNullOrEmpty(user.FirstName) 
-                || string.IsNullOrEmpty(user.LastName))
+            if (user == null ||
+                string.IsNullOrEmpty(user.FirstName) ||
+                string.IsNullOrEmpty(user.LastName))
             {
-                return null;
+                return string.Empty; // Return an empty string instead of null
             }
 
             return user.FirstName + " " + user.LastName;
