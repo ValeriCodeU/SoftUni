@@ -63,7 +63,7 @@ public class TC01IfUserIsInvalidTryAgainTest
         // 10 | storeText | css=*[data-test="error"] | errorMessage
         vars["errorMessage"] = driver.FindElement(By.CssSelector("*[data-test=\"error\"]")).Text;
         // 11 | if |  ${errorMessage} === "Epic sadface: Username and password do not match any user in this service" | 
-        if ((Boolean)js.ExecuteScript("return (arguments[0] === \'Epic sadface: Username and password do not match any user in this service\')", vars["errorMessage"]))
+        if (vars["errorMessage"] is string errorMessage && errorMessage == "Epic sadface: Username and password do not match any user in this service")
         {
             // 12 | echo | Wrong username | 
             Console.WriteLine("Wrong username");
